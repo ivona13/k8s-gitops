@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jao-fe.fullname" . }}-jao-fe
+  labels:
+  {{- include "jao-fe.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.jaoFe.replicas }}
+  selector:
+    matchLabels:
+      app: jao-fe
+    {{- include "jao-fe.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: jao-fe
+      {{- include "jao-fe.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.jaoFe.jaoFe.image.repository }}:{{ .Values.jaoFe.jaoFe.image.tag
+          | default .Chart.AppVersion }}
+        imagePullPolicy: {{ .Values.jaoFe.jaoFe.imagePullPolicy }}
+        name: jao-fe
+        ports:
+        - containerPort: 3000
+        resources: {}

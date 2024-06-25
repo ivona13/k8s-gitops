@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jao-fe
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jao-fe
+  template:
+    metadata:
+      labels:
+        app: jao-fe
+    spec:
+      containers:
+        - name: jao-fe
+          image: ir1313/jao-fe:0.0.1
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+#      imagePullSecrets:
+#        - name: jao-cr-secret
