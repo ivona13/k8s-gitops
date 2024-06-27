@@ -23,6 +23,13 @@ Steps:
 ```
    helmify -f /my_directory mychart
    ```
-6. Commit configuration files to the repository on GitHub.
-7. Configure ArgoCD to "look" at the Helm chart repo -> create new <b>Application</b>
+6. Commit configuration files to the repository on GitHub
+7. Configure repo on the ArgoCD
+
+![argocd-repo](argocd-repo-configuration.png)
+
+8. Configure ArgoCD to "look" at the Helm chart repo -> create new <b>Application</b>
+
+![argocd-application](argocd-app-configuration.png)
+![argocd-application](argocd-application.png)
 
