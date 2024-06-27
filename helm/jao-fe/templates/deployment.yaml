@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "jao-fe.fullname" . }}-jao-fe
+  name: {{ include "jao-fe.fullname" . }}-fe
   labels:
   {{- include "jao-fe.labels" . | nindent 4 }}
 spec:
