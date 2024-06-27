@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "jao-fe.fullname" . }}-service
+  name: {{ include "jao.fullname" . }}-service
   labels:
-  {{- include "jao-fe.labels" . | nindent 4 }}
+  {{- include "jao.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
     app: jao-fe
-  {{- include "jao-fe.selectorLabels" . | nindent 4 }}
+  {{- include "jao.selectorLabels" . | nindent 4 }}
   ports:
 	{{- .Values.service.ports | toYaml | nindent 2 -}}
